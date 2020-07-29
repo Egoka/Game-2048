@@ -1,0 +1,5 @@
+/cmake-build-debug/
+/.vs/
+/out/
+/libs/
+/CMakeSettings.json

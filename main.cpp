@@ -67,6 +67,13 @@ void randomTwo(int stepsSum, int numberOfEmptyCells) {
     if (stepsSum > 0) {
         int rows, columns;
         randomСoordinate(rows, columns, numberOfEmptyCells);
+        for (int numberCopy = 0; numberCopy < 8; numberCopy++)
+            if (!Number[0][numberCopy].copy) {
+                Number[0][numberCopy].displacement(columns, rows);
+                Number[0][numberCopy].changingArray(rows, columns, 1, numberCopy + 1);
+                Number[0][numberCopy].copy = true;
+                break;
+            }
     }
 }
 void randomСoordinate(int& rows, int& columns, int numberOfEmptyCells) {

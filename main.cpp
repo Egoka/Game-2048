@@ -56,8 +56,12 @@ int main()
         for (auto& n : h)
             n.copy = false;
     randomTwo(1, 16);
+    ////////////////////////////////////////////////////
     while (window.isOpen())
     {
+        Event act{};
+        while (window.pollEvent(act))
+            if (act.type == Event::Closed) window.close();
         window.clear();
         window.draw(sprite);
         window.display();

@@ -17,6 +17,8 @@ public:
         texture.loadFromImage(image);
         sprite.setTexture(texture);
     }
+    void displacement(int x, int y) {
+        sprite.setPosition(22 + 212 * x, 22 + 212 * y); }
 };
 
 int main()

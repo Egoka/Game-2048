@@ -22,6 +22,22 @@ public:
     void changingArray(int x, int y, int h2, int h1) {
         arr[x][y] = h1 + 10 * h2; }
 };
+ICON Number[16][8] = { {ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg") },
+                       { ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg"), ICON("img/4.jpg") },
+                       { ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg"), ICON("img/8.jpg") },
+                       { ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg"), ICON("img/16.jpg") },
+                       { ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg"), ICON("img/32.jpg") },
+                       { ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg"), ICON("img/64.jpg") },
+                       { ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg"), ICON("img/128.jpg") },
+                       { ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg"), ICON("img/256.jpg") },
+                       { ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg"), ICON("img/512.jpg") },
+                       { ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg"),ICON("img/1024.jpg")},
+                       { ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg"),ICON("img/2048.jpg")},
+                       { ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg"),ICON("img/4096.jpg")},
+                       { ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg"),ICON("img/8192.jpg")},
+                       { ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg"),ICON("img/16384.jpg")},
+                       { ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg")},
+                       { ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg")} };
 
 int main()
 {
@@ -33,6 +49,9 @@ int main()
     for (auto& i : arr)
         for (int& j : i)
             j = 0;
+    for (auto& h : Number)
+        for (auto& n : h)
+            n.copy = 0;
     while (window.isOpen())
     {
         window.clear();

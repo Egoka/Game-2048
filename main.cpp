@@ -3,6 +3,16 @@
 using namespace std;
 using namespace sf;
 int arr[4][4];
+class ICON {
+private:
+    string File;
+    Image image;
+    Texture texture;
+public:
+    int copy{};
+    Sprite sprite;
+};
+
 int main()
 {
     RenderWindow window(VideoMode(870, 870), "2048");

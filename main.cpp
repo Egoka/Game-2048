@@ -70,12 +70,13 @@ void randomTwo(int stepsSum, int numberOfEmptyCells) {
     }
 }
 void randomСoordinate(int& rows, int& columns, int numberOfEmptyCells) {
-    bool flag = false;
     srand(time(nullptr));
     int randomNumber = 0 + rand() % numberOfEmptyCells, number = 0;
     for (rows = 0; rows <= 3; rows++) {
         for (columns = 0; columns <= 3; columns++)
             if (arr[rows][columns] == 0) {
+                if (number == randomNumber) return;
+                number++;
             }
     }
 }

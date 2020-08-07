@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <ctime>
 using namespace std;
 using namespace sf;
 int arr[4][4];
@@ -39,6 +40,7 @@ ICON Number[16][8] = { {ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"),
                        { ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg")},
                        { ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg")} };
 void randomTwo(int, int);
+void randomСoordinate(int&, int&, int);
 
 int main()
 {
@@ -64,5 +66,17 @@ int main()
 void randomTwo(int stepsSum, int numberOfEmptyCells) {
     if (stepsSum > 0) {
         int rows, columns;
+        randomСoordinate(rows, columns, numberOfEmptyCells);
+    }
+}
+void randomСoordinate(int& rows, int& columns, int numberOfEmptyCells) {
+    srand(time(nullptr));
+    int randomNumber = 0 + rand() % numberOfEmptyCells, number = 0;
+    for (rows = 0; rows <= 3; rows++) {
+        for (columns = 0; columns <= 3; columns++)
+            if (arr[rows][columns] == 0) {
+                if (number == randomNumber) return;
+                number++;
+            }
     }
 }

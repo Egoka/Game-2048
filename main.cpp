@@ -64,6 +64,10 @@ int main()
             if (act.type == Event::Closed) window.close();
         window.clear();
         window.draw(sprite);
+        for (auto& h : arr)
+            for (int n : h)
+                if (n != 0)
+                    window.draw(Number[n / 10 - 1][n - (n / 10) * 10 - 1].sprite);
         window.display();
     }
     return 0;

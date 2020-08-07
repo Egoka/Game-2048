@@ -62,5 +62,7 @@ int main()
     return 0;
 }
 void randomTwo(int stepsSum, int numberOfEmptyCells) {
-
+    if (stepsSum > 0) {
+        int rows, columns;
+    }
 }

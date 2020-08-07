@@ -11,6 +11,12 @@ private:
 public:
     int copy{};
     Sprite sprite;
+    explicit ICON(const String& F) {
+        File = F;
+        image.loadFromFile(File);
+        texture.loadFromImage(image);
+        sprite.setTexture(texture);
+    }
 };
 
 int main()

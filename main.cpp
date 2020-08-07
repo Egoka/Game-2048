@@ -10,7 +10,7 @@ private:
     Image image;
     Texture texture;
 public:
-    int copy{};
+    bool copy{};
     Sprite sprite;
     explicit ICON(const String& F) {
         File = F;
@@ -54,7 +54,8 @@ int main()
             j = 0;
     for (auto& h : Number)
         for (auto& n : h)
-            n.copy = 0;
+            n.copy = false;
+    randomTwo(1, 16);
     while (window.isOpen())
     {
         window.clear();

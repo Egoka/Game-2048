@@ -19,6 +19,8 @@ public:
     }
     void displacement(int x, int y) {
         sprite.setPosition(22 + 212 * x, 22 + 212 * y); }
+    void changingArray(int x, int y, int h2, int h1) {
+        arr[x][y] = h1 + 10 * h2; }
 };
 
 int main()

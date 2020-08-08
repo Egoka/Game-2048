@@ -67,10 +67,12 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 0; columns < 4; columns++) {
                         if (arr[rows][columns] != 0) {
+                            for (int i = 0; i <= columns; i++)
+                                if (arr[rows][i] == 0) emptyCellsSum += 1;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -81,10 +83,12 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 3; columns >= 0; columns--) {
                         if (arr[rows][columns] != 0) {
+                            for (int i = columns; i < 4; i++)
+                                if (arr[rows][i] == 0) emptyCellsSum++;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -95,10 +99,12 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 0; rows < 4; rows++) {
                         if (arr[rows][columns] != 0) {
+                            for (int i = rows; i >= 0; i--)
+                                if (arr[i][columns] == 0) emptyCellsSum += 1;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -109,10 +115,12 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 3; rows >= 0; rows--) {
                         if (arr[rows][columns] != 0) {
+                            for (int i = rows; i < 4; i++)
+                                if (arr[i][columns] == 0) emptyCellsSum++;
                         }
                         else numberOfEmptyCells++;
                     }

@@ -73,6 +73,11 @@ int main()
                         if (arr[rows][columns] != 0) {
                             for (int i = 0; i <= columns; i++)
                                 if (arr[rows][i] == 0) emptyCellsSum += 1;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows][columns - emptyCellsSum] = patch;
+                            }
                         }
                         else numberOfEmptyCells++;
                     }
@@ -89,6 +94,11 @@ int main()
                         if (arr[rows][columns] != 0) {
                             for (int i = columns; i < 4; i++)
                                 if (arr[rows][i] == 0) emptyCellsSum++;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows][columns + emptyCellsSum] = patch;
+                            }
                         }
                         else numberOfEmptyCells++;
                     }
@@ -105,6 +115,11 @@ int main()
                         if (arr[rows][columns] != 0) {
                             for (int i = rows; i >= 0; i--)
                                 if (arr[i][columns] == 0) emptyCellsSum += 1;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows - emptyCellsSum][columns] = patch;
+                            }
                         }
                         else numberOfEmptyCells++;
                     }
@@ -121,6 +136,11 @@ int main()
                         if (arr[rows][columns] != 0) {
                             for (int i = rows; i < 4; i++)
                                 if (arr[i][columns] == 0) emptyCellsSum++;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows + emptyCellsSum][columns] = patch;
+                            }
                         }
                         else numberOfEmptyCells++;
                     }

@@ -67,24 +67,56 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
+                int numberOfEmptyCells = 0;
+                for (int rows = 0; rows < 4; rows++) {
+                    for (int columns = 0; columns < 4; columns++) {
+                        if (arr[rows][columns] != 0) {
+                        }
+                        else numberOfEmptyCells++;
+                    }
+                }
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
+                int numberOfEmptyCells = 0;
+                for (int rows = 0; rows < 4; rows++) {
+                    for (int columns = 3; columns >= 0; columns--) {
+                        if (arr[rows][columns] != 0) {
+                        }
+                        else numberOfEmptyCells++;
+                    }
+                }
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
+                int numberOfEmptyCells = 0;
+                for (int columns = 0; columns < 4; columns++) {
+                    for (int rows = 0; rows < 4; rows++) {
+                        if (arr[rows][columns] != 0) {
+                        }
+                        else numberOfEmptyCells++;
+                    }
+                }
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Down)) {
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
+                int numberOfEmptyCells = 0;
+                for (int columns = 0; columns < 4; columns++) {
+                    for (int rows = 3; rows >= 0; rows--) {
+                        if (arr[rows][columns] != 0) {
+                        }
+                        else numberOfEmptyCells++;
+                    }
+                }
             }
         }
         window.clear();

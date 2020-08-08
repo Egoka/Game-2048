@@ -85,6 +85,10 @@ int main()
                             if (previousNumber == coordinateNumber / 10) {
                                 Number[numberPower - 1][numberCopy - 1].copy = false;
                                 arr[rows][columns - emptyCellsSum] = 0;
+                                int number = arr[rows][columns - emptyCellsSum - 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns - emptyCellsSum - 1;
+                                numberPower = number / 10;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -114,6 +118,10 @@ int main()
                             if (previousNumber == coordinateNumber / 10) {
                                 Number[numberPower - 1][numberCopy - 1].copy = false;
                                 arr[rows][columns + emptyCellsSum] = 0;
+                                int number = arr[rows][columns + emptyCellsSum + 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns + emptyCellsSum + 1;
+                                numberPower = number / 10;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -143,6 +151,10 @@ int main()
                             if (previousNumber == coordinateNumber / 10) {
                                 Number[numberPower - 1][numberCopy - 1].copy = false;
                                 arr[rows - emptyCellsSum][columns] = 0;
+                                int number = arr[rows - emptyCellsSum - 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows - emptyCellsSum - 1;
+                                numberPower = number / 10;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -172,6 +184,10 @@ int main()
                             if (previousNumber == coordinateNumber / 10) {
                                 Number[numberPower - 1][numberCopy - 1].copy = false;
                                 arr[rows + emptyCellsSum][columns] = 0;
+                                int number = arr[rows + emptyCellsSum + 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows + emptyCellsSum + 1;
+                                numberPower = number / 10;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;

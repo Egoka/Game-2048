@@ -78,6 +78,10 @@ int main()
                                 arr[rows][columns] = 0;
                                 arr[rows][columns - emptyCellsSum] = patch;
                             }
+                            int coordinateNumber = arr[rows][columns - emptyCellsSum];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns - emptyCellsSum, rows);
                         }
                         else numberOfEmptyCells++;
                     }
@@ -99,6 +103,10 @@ int main()
                                 arr[rows][columns] = 0;
                                 arr[rows][columns + emptyCellsSum] = patch;
                             }
+                            int coordinateNumber = arr[rows][columns + emptyCellsSum];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns + emptyCellsSum, rows);
                         }
                         else numberOfEmptyCells++;
                     }
@@ -120,6 +128,10 @@ int main()
                                 arr[rows][columns] = 0;
                                 arr[rows - emptyCellsSum][columns] = patch;
                             }
+                            int coordinateNumber = arr[rows - emptyCellsSum][columns];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns, rows - emptyCellsSum);
                         }
                         else numberOfEmptyCells++;
                     }
@@ -141,6 +153,10 @@ int main()
                                 arr[rows][columns] = 0;
                                 arr[rows + emptyCellsSum][columns] = patch;
                             }
+                            int coordinateNumber = arr[rows + emptyCellsSum][columns];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns, rows + emptyCellsSum);
                         }
                         else numberOfEmptyCells++;
                     }

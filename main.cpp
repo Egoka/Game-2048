@@ -62,6 +62,10 @@ int main()
         Event act{};
         while (window.pollEvent(act))
             if (act.type == Event::Closed) window.close();
+        if (Keyboard::isKeyPressed(Keyboard::Left)) {}
+        if (Keyboard::isKeyPressed(Keyboard::Right)) {}
+        if (Keyboard::isKeyPressed(Keyboard::Up)) {}
+        if (Keyboard::isKeyPressed(Keyboard::Down)) {}
         window.clear();
         window.draw(sprite);
         for (auto& h : arr)

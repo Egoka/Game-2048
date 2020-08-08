@@ -83,6 +83,8 @@ int main()
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns - emptyCellsSum, rows);
                             if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns - emptyCellsSum] = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -110,6 +112,8 @@ int main()
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns + emptyCellsSum, rows);
                             if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns + emptyCellsSum] = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -137,6 +141,8 @@ int main()
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows - emptyCellsSum);
                             if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows - emptyCellsSum][columns] = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -164,6 +170,8 @@ int main()
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows + emptyCellsSum);
                             if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows + emptyCellsSum][columns] = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;

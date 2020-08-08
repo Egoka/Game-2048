@@ -40,7 +40,7 @@ ICON Number[16][8] = { {ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"),
                        { ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg")},
                        { ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg")} };
 void randomTwo(int, int);
-void randomСoordinate(int&, int&, int);
+void randomCoordinate(int&, int&, int);
 
 int main()
 {
@@ -57,11 +57,200 @@ int main()
             n.copy = false;
     randomTwo(1, 16);
     ////////////////////////////////////////////////////
+    Clock clock;
     while (window.isOpen())
     {
         Event act{};
         while (window.pollEvent(act))
             if (act.type == Event::Closed) window.close();
+        if (Keyboard::isKeyPressed(Keyboard::Left)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                for (int rows = 0; rows < 4; rows++) {
+                    for (int columns = 0; columns < 4; columns++) {
+                        if (arr[rows][columns] != 0) {
+                            for (int i = 0; i <= columns; i++)
+                                if (arr[rows][i] == 0) emptyCellsSum += 1;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows][columns - emptyCellsSum] = patch;
+                            }
+                            int coordinateNumber = arr[rows][columns - emptyCellsSum];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns - emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns - emptyCellsSum] = 0;
+                                int number = arr[rows][columns - emptyCellsSum - 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns - emptyCellsSum - 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(newAddress, rows);
+                                        Number[numberPower][numberCopy].changingArray(rows, newAddress, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows][columns - emptyCellsSum - 1] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
+                        }
+                        else numberOfEmptyCells++;
+                    }previousNumber = 0;
+                }
+                if (numberOfEmptyCells == 0) continue;
+                randomTwo(stepsSum, numberOfEmptyCells);
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Right)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                for (int rows = 0; rows < 4; rows++) {
+                    for (int columns = 3; columns >= 0; columns--) {
+                        if (arr[rows][columns] != 0) {
+                            for (int i = columns; i < 4; i++)
+                                if (arr[rows][i] == 0) emptyCellsSum++;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows][columns + emptyCellsSum] = patch;
+                            }
+                            int coordinateNumber = arr[rows][columns + emptyCellsSum];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns + emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns + emptyCellsSum] = 0;
+                                int number = arr[rows][columns + emptyCellsSum + 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns + emptyCellsSum + 1;
+                                numberPower = number / 10;
+                                for (int copyNumber = 0; copyNumber < 8; copyNumber++)
+                                    if (!Number[numberPower][copyNumber].copy) {
+                                        Number[numberPower][copyNumber].displacement(newAddress, rows);
+                                        Number[numberPower][copyNumber].changingArray(rows, newAddress, numberPower + 1, copyNumber + 1);
+                                        Number[numberPower][copyNumber].copy = true;
+                                        arr[rows][columns + emptyCellsSum + 1] = (numberPower + 1) * 10 + copyNumber + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
+                        }
+                        else numberOfEmptyCells++;
+                    }previousNumber = 0;
+                }
+                if (numberOfEmptyCells == 0) continue;
+                randomTwo(stepsSum, numberOfEmptyCells);
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Up)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                for (int columns = 0; columns < 4; columns++) {
+                    for (int rows = 0; rows < 4; rows++) {
+                        if (arr[rows][columns] != 0) {
+                            for (int i = rows; i >= 0; i--)
+                                if (arr[i][columns] == 0) emptyCellsSum += 1;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows - emptyCellsSum][columns] = patch;
+                            }
+                            int coordinateNumber = arr[rows - emptyCellsSum][columns];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns, rows - emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows - emptyCellsSum][columns] = 0;
+                                int number = arr[rows - emptyCellsSum - 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows - emptyCellsSum - 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(columns, newAddress);
+                                        Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows - emptyCellsSum - 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
+                        }
+                        else numberOfEmptyCells++;
+                    }previousNumber = 0;
+                }
+                if (numberOfEmptyCells == 0) continue;
+                randomTwo(stepsSum, numberOfEmptyCells);
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Down)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                for (int columns = 0; columns < 4; columns++) {
+                    for (int rows = 3; rows >= 0; rows--) {
+                        if (arr[rows][columns] != 0) {
+                            for (int i = rows; i < 4; i++)
+                                if (arr[i][columns] == 0) emptyCellsSum++;
+                            if (emptyCellsSum > 0) {
+                                int patch = arr[rows][columns];
+                                arr[rows][columns] = 0;
+                                arr[rows + emptyCellsSum][columns] = patch;
+                            }
+                            int coordinateNumber = arr[rows + emptyCellsSum][columns];
+                            int numberPower = coordinateNumber / 10;
+                            int numberCopy = coordinateNumber - numberPower * 10;
+                            Number[numberPower - 1][numberCopy - 1].displacement(columns, rows + emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows + emptyCellsSum][columns] = 0;
+                                int number = arr[rows + emptyCellsSum + 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows + emptyCellsSum + 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(columns, newAddress);
+                                        Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows + emptyCellsSum + 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
+                        }
+                        else numberOfEmptyCells++;
+                    }previousNumber = 0;
+                }
+                if (numberOfEmptyCells == 0) continue;
+                randomTwo(stepsSum, numberOfEmptyCells);
+            }
+        }
         window.clear();
         window.draw(sprite);
         for (auto& h : arr)
@@ -75,7 +264,7 @@ int main()
 void randomTwo(int stepsSum, int numberOfEmptyCells) {
     if (stepsSum > 0) {
         int rows, columns;
-        randomСoordinate(rows, columns, numberOfEmptyCells);
+        randomCoordinate(rows, columns, numberOfEmptyCells);
         for (int numberCopy = 0; numberCopy < 8; numberCopy++)
             if (!Number[0][numberCopy].copy) {
                 Number[0][numberCopy].displacement(columns, rows);
@@ -85,7 +274,7 @@ void randomTwo(int stepsSum, int numberOfEmptyCells) {
             }
     }
 }
-void randomСoordinate(int& rows, int& columns, int numberOfEmptyCells) {
+void randomCoordinate(int& rows, int& columns, int numberOfEmptyCells) {
     srand(time(nullptr));
     int randomNumber = 0 + rand() % numberOfEmptyCells, number = 0;
     for (rows = 0; rows <= 3; rows++) {

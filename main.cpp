@@ -40,7 +40,7 @@ ICON Number[16][8] = { {ICON("img/2.jpg"), ICON("img/2.jpg"), ICON("img/2.jpg"),
                        { ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg"),ICON("img/32768.jpg")},
                        { ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg"),ICON("img/65536.jpg")} };
 void randomTwo(int, int);
-void randomСoordinate(int&, int&, int);
+void randomCoordinate(int&, int&, int);
 
 int main()
 {
@@ -57,15 +57,36 @@ int main()
             n.copy = false;
     randomTwo(1, 16);
     ////////////////////////////////////////////////////
+    Clock clock;
     while (window.isOpen())
     {
         Event act{};
         while (window.pollEvent(act))
             if (act.type == Event::Closed) window.close();
-        if (Keyboard::isKeyPressed(Keyboard::Left)) {}
-        if (Keyboard::isKeyPressed(Keyboard::Right)) {}
-        if (Keyboard::isKeyPressed(Keyboard::Up)) {}
-        if (Keyboard::isKeyPressed(Keyboard::Down)) {}
+        if (Keyboard::isKeyPressed(Keyboard::Left)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Right)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Up)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+            }
+        }
+        if (Keyboard::isKeyPressed(Keyboard::Down)) {
+            float pressingTime = clock.getElapsedTime().asMilliseconds();
+            clock.restart();
+            if (pressingTime > 50) {
+            }
+        }
         window.clear();
         window.draw(sprite);
         for (auto& h : arr)
@@ -79,7 +100,7 @@ int main()
 void randomTwo(int stepsSum, int numberOfEmptyCells) {
     if (stepsSum > 0) {
         int rows, columns;
-        randomСoordinate(rows, columns, numberOfEmptyCells);
+        randomCoordinate(rows, columns, numberOfEmptyCells);
         for (int numberCopy = 0; numberCopy < 8; numberCopy++)
             if (!Number[0][numberCopy].copy) {
                 Number[0][numberCopy].displacement(columns, rows);
@@ -89,7 +110,7 @@ void randomTwo(int stepsSum, int numberOfEmptyCells) {
             }
     }
 }
-void randomСoordinate(int& rows, int& columns, int numberOfEmptyCells) {
+void randomCoordinate(int& rows, int& columns, int numberOfEmptyCells) {
     srand(time(nullptr));
     int randomNumber = 0 + rand() % numberOfEmptyCells, number = 0;
     for (rows = 0; rows <= 3; rows++) {

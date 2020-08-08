@@ -67,7 +67,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 0; columns < 4; columns++) {
                         if (arr[rows][columns] != 0) {
@@ -97,6 +97,8 @@ int main()
                                         arr[rows][columns - emptyCellsSum - 1] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
+                                amountMerge++;
+                                previousNumber = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -108,7 +110,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 3; columns >= 0; columns--) {
                         if (arr[rows][columns] != 0) {
@@ -138,6 +140,8 @@ int main()
                                         arr[rows][columns + emptyCellsSum + 1] = (numberPower + 1) * 10 + copyNumber + 1;
                                         break;
                                     }
+                                amountMerge++;
+                                previousNumber = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -149,7 +153,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 0; rows < 4; rows++) {
                         if (arr[rows][columns] != 0) {
@@ -179,6 +183,8 @@ int main()
                                         arr[rows - emptyCellsSum - 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
+                                amountMerge++;
+                                previousNumber = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -190,7 +196,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 3; rows >= 0; rows--) {
                         if (arr[rows][columns] != 0) {
@@ -220,6 +226,8 @@ int main()
                                         arr[rows + emptyCellsSum + 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
+                                amountMerge++;
+                                previousNumber = 0;
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;

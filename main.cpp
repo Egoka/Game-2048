@@ -67,7 +67,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 0; columns < 4; columns++) {
                         if (arr[rows][columns] != 0) {
@@ -82,6 +82,24 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns - emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns - emptyCellsSum] = 0;
+                                int number = arr[rows][columns - emptyCellsSum - 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns - emptyCellsSum - 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(newAddress, rows);
+                                        Number[numberPower][numberCopy].changingArray(rows, newAddress, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows][columns - emptyCellsSum - 1] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -92,7 +110,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 3; columns >= 0; columns--) {
                         if (arr[rows][columns] != 0) {
@@ -107,6 +125,24 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns + emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows][columns + emptyCellsSum] = 0;
+                                int number = arr[rows][columns + emptyCellsSum + 1];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = columns + emptyCellsSum + 1;
+                                numberPower = number / 10;
+                                for (int copyNumber = 0; copyNumber < 8; copyNumber++)
+                                    if (!Number[numberPower][copyNumber].copy) {
+                                        Number[numberPower][copyNumber].displacement(newAddress, rows);
+                                        Number[numberPower][copyNumber].changingArray(rows, newAddress, numberPower + 1, copyNumber + 1);
+                                        Number[numberPower][copyNumber].copy = true;
+                                        arr[rows][columns + emptyCellsSum + 1] = (numberPower + 1) * 10 + copyNumber + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -117,7 +153,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 0; rows < 4; rows++) {
                         if (arr[rows][columns] != 0) {
@@ -132,6 +168,24 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows - emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows - emptyCellsSum][columns] = 0;
+                                int number = arr[rows - emptyCellsSum - 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows - emptyCellsSum - 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(columns, newAddress);
+                                        Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows - emptyCellsSum - 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -142,7 +196,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 3; rows >= 0; rows--) {
                         if (arr[rows][columns] != 0) {
@@ -157,6 +211,24 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows + emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                                Number[numberPower - 1][numberCopy - 1].copy = false;
+                                arr[rows + emptyCellsSum][columns] = 0;
+                                int number = arr[rows + emptyCellsSum + 1][columns];
+                                Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
+                                int newAddress = rows + emptyCellsSum + 1;
+                                numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        Number[numberPower][numberCopy].displacement(columns, newAddress);
+                                        Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
+                                        Number[numberPower][numberCopy].copy = true;
+                                        arr[rows + emptyCellsSum + 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
+                                        break;
+                                    }
+                                amountMerge++;
+                                previousNumber = 0;
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }

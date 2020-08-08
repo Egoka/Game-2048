@@ -106,6 +106,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right)) {
@@ -151,6 +152,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Up)) {
@@ -196,6 +198,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Down)) {
@@ -241,6 +244,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
         window.clear();

@@ -106,6 +106,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                if (numberOfEmptyCells == 0) continue;
                 randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
@@ -152,6 +153,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                if (numberOfEmptyCells == 0) continue;
                 randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
@@ -198,6 +200,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                if (numberOfEmptyCells == 0) continue;
                 randomTwo(stepsSum, numberOfEmptyCells);
             }
         }
@@ -244,6 +247,7 @@ int main()
                         else numberOfEmptyCells++;
                     }previousNumber = 0;
                 }
+                if (numberOfEmptyCells == 0) continue;
                 randomTwo(stepsSum, numberOfEmptyCells);
             }
         }

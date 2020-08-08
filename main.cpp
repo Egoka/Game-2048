@@ -67,7 +67,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 0; columns < 4; columns++) {
                         if (arr[rows][columns] != 0) {
@@ -100,9 +100,11 @@ int main()
                                 amountMerge++;
                                 previousNumber = 0;
                             } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
                         }
                         else numberOfEmptyCells++;
-                    }
+                    }previousNumber = 0;
                 }
             }
         }
@@ -110,7 +112,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 3; columns >= 0; columns--) {
                         if (arr[rows][columns] != 0) {
@@ -143,9 +145,11 @@ int main()
                                 amountMerge++;
                                 previousNumber = 0;
                             } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
                         }
                         else numberOfEmptyCells++;
-                    }
+                    }previousNumber = 0;
                 }
             }
         }
@@ -153,7 +157,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 0; rows < 4; rows++) {
                         if (arr[rows][columns] != 0) {
@@ -186,9 +190,11 @@ int main()
                                 amountMerge++;
                                 previousNumber = 0;
                             } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
                         }
                         else numberOfEmptyCells++;
-                    }
+                    }previousNumber = 0;
                 }
             }
         }
@@ -196,7 +202,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
+                int emptyCellsSum = 0, stepsSum = 0, numberOfEmptyCells = 0, previousNumber = 0, amountMerge = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 3; rows >= 0; rows--) {
                         if (arr[rows][columns] != 0) {
@@ -229,9 +235,11 @@ int main()
                                 amountMerge++;
                                 previousNumber = 0;
                             } else previousNumber = numberPower;
+                            stepsSum += (emptyCellsSum + amountMerge);
+                            emptyCellsSum = 0;
                         }
                         else numberOfEmptyCells++;
-                    }
+                    }previousNumber = 0;
                 }
             }
         }

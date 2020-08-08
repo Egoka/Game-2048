@@ -89,6 +89,10 @@ int main()
                                 Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
                                 int newAddress = columns - emptyCellsSum - 1;
                                 numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        break;
+                                    }
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -122,6 +126,10 @@ int main()
                                 Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
                                 int newAddress = columns + emptyCellsSum + 1;
                                 numberPower = number / 10;
+                                for (int copyNumber = 0; copyNumber < 8; copyNumber++)
+                                    if (!Number[numberPower][copyNumber].copy) {
+                                        break;
+                                    }
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -155,6 +163,10 @@ int main()
                                 Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
                                 int newAddress = rows - emptyCellsSum - 1;
                                 numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        break;
+                                    }
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
@@ -188,6 +200,10 @@ int main()
                                 Number[number / 10 - 1][number - (number / 10) * 10 - 1].copy = false;
                                 int newAddress = rows + emptyCellsSum + 1;
                                 numberPower = number / 10;
+                                for (numberCopy = 0; numberCopy < 8; numberCopy++)
+                                    if (!Number[numberPower][numberCopy].copy) {
+                                        break;
+                                    }
                             } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;

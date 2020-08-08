@@ -94,6 +94,7 @@ int main()
                                         Number[numberPower][numberCopy].displacement(newAddress, rows);
                                         Number[numberPower][numberCopy].changingArray(rows, newAddress, numberPower + 1, numberCopy + 1);
                                         Number[numberPower][numberCopy].copy = true;
+                                        arr[rows][columns - emptyCellsSum - 1] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
                             } else previousNumber = numberPower;
@@ -134,6 +135,7 @@ int main()
                                         Number[numberPower][copyNumber].displacement(newAddress, rows);
                                         Number[numberPower][copyNumber].changingArray(rows, newAddress, numberPower + 1, copyNumber + 1);
                                         Number[numberPower][copyNumber].copy = true;
+                                        arr[rows][columns + emptyCellsSum + 1] = (numberPower + 1) * 10 + copyNumber + 1;
                                         break;
                                     }
                             } else previousNumber = numberPower;
@@ -174,6 +176,7 @@ int main()
                                         Number[numberPower][numberCopy].displacement(columns, newAddress);
                                         Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
                                         Number[numberPower][numberCopy].copy = true;
+                                        arr[rows - emptyCellsSum - 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
                             } else previousNumber = numberPower;
@@ -214,6 +217,7 @@ int main()
                                         Number[numberPower][numberCopy].displacement(columns, newAddress);
                                         Number[numberPower][numberCopy].changingArray(newAddress, columns, numberPower + 1, numberCopy + 1);
                                         Number[numberPower][numberCopy].copy = true;
+                                        arr[rows + emptyCellsSum + 1][columns] = (numberPower + 1) * 10 + numberCopy + 1;
                                         break;
                                     }
                             } else previousNumber = numberPower;

@@ -67,7 +67,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 0; columns < 4; columns++) {
                         if (arr[rows][columns] != 0) {
@@ -82,6 +82,8 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns - emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -92,7 +94,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
                 for (int rows = 0; rows < 4; rows++) {
                     for (int columns = 3; columns >= 0; columns--) {
                         if (arr[rows][columns] != 0) {
@@ -107,6 +109,8 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns + emptyCellsSum, rows);
+                            if (previousNumber == coordinateNumber / 10) {
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -117,7 +121,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 0; rows < 4; rows++) {
                         if (arr[rows][columns] != 0) {
@@ -132,6 +136,8 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows - emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
@@ -142,7 +148,7 @@ int main()
             float pressingTime = clock.getElapsedTime().asMilliseconds();
             clock.restart();
             if (pressingTime > 50) {
-                int emptyCellsSum = 0, numberOfEmptyCells = 0;
+                int emptyCellsSum = 0, numberOfEmptyCells = 0, previousNumber = 0;
                 for (int columns = 0; columns < 4; columns++) {
                     for (int rows = 3; rows >= 0; rows--) {
                         if (arr[rows][columns] != 0) {
@@ -157,6 +163,8 @@ int main()
                             int numberPower = coordinateNumber / 10;
                             int numberCopy = coordinateNumber - numberPower * 10;
                             Number[numberPower - 1][numberCopy - 1].displacement(columns, rows + emptyCellsSum);
+                            if (previousNumber == coordinateNumber / 10) {
+                            } else previousNumber = numberPower;
                         }
                         else numberOfEmptyCells++;
                     }
